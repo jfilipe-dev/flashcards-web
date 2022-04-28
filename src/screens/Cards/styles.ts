@@ -28,3 +28,9 @@ export const InputIcon = styled.div`
 export const ListCards = styled.div`
   margin: 40px 0;
 `;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

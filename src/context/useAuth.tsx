@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useState,
   ReactChild,
+  useEffect,
 } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -37,19 +38,29 @@ export const AuthProvider = ({ children }: { children: ReactChild }) => {
       password
     );
 
+    localStorage.setItem('@flashcards-user', JSON.stringify(user));
     setCurrentUser(user);
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
 
+    localStorage.setItem('@flashcards-user', JSON.stringify(user));
     setCurrentUser(user);
   }, []);
 
   const logout = useCallback(async () => {
     await signOut(auth);
 
+    localStorage.removeItem('@flashcards-user');
     setCurrentUser(null);
+  }, []);
+
+  useEffect(() => {
+    const user = localStorage.getItem('@flashcards-user');
+    if (user) {
+      setCurrentUser(JSON.parse(user));
+    }
   }, []);
 
   return (

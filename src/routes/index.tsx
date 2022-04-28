@@ -1,5 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from 'react-router-dom';
 import Header from '../components/Header';
 import Main from '../screens/main';
 import Register from '../screens/register';
@@ -8,6 +13,7 @@ import Home from '../screens/Home';
 import CreateOrUpdateCollection from '../screens/CreateOrUpdateCollection';
 import Cards from '../screens/Cards';
 import CreateOrUpdateCard from '../screens/CreateOrUpdateCard';
+import Play from '../screens/Play';
 
 import PrivateRoute from './private';
 
@@ -58,6 +64,15 @@ export default function App() {
             element={
               <PrivateRoute>
                 <CreateOrUpdateCard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/play-cards"
+            element={
+              <PrivateRoute>
+                <Play />
               </PrivateRoute>
             }
           />

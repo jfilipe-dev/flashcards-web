@@ -73,6 +73,7 @@ const Register: React.FC = () => {
         label="Senha"
         onChange={(e) => setPassword(e.target.value)}
         error={errors.password}
+        type="password"
       />
 
       <Button label="Entrar" onClick={() => handleSubmit()} />

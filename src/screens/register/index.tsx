@@ -91,12 +91,14 @@ const Register: React.FC = () => {
         info="Use ao menos 8 caracteres contendo letras, números e ao menos um caracter especial"
         onChange={(e) => setPassword(e.target.value)}
         error={errors.password}
+        type="password"
       />
 
       <Input
         label="Repetir a senha"
         onChange={(e) => setConfirmPassword(e.target.value)}
         error={errors.confirmPassword}
+        type="password"
       />
 
       <Button label="Cadastrar" onClick={() => handleSubmit()} />

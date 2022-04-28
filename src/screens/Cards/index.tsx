@@ -13,6 +13,7 @@ import {
   InputIcon,
   Title,
   ListCards,
+  Footer,
 } from './styles';
 
 interface Location extends Path {
@@ -49,6 +50,14 @@ const Cards: React.FC = () => {
     return cards?.filter((card) => card.front.includes(search));
   }, [cards, search]);
 
+  const handlePlayCards = () => {
+    navigate('/play-cards', {
+      state: {
+        cards,
+      },
+    });
+  };
+
   useEffect(() => {
     getCards(collection.id).then(setCards);
   }, [collection.id]);
@@ -80,6 +89,10 @@ const Cards: React.FC = () => {
           />
         ))}
       </ListCards>
+
+      <Footer>
+        <Button label="Jogar!" green onClick={handlePlayCards} />
+      </Footer>
     </Container>
   );
 };

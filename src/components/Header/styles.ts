@@ -17,6 +17,11 @@ export const Logo = styled.img`
   width: 180px;
 `;
 
+export const HomeButton = styled.button`
+  background: transparent;
+  border: none;
+`;
+
 export const Menu = styled.div`
   display: flex;
   flex-direction: row;
