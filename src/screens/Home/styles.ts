@@ -16,6 +16,6 @@ export const ListCollections = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 40px;
 `;

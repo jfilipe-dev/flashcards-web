@@ -1,17 +1,16 @@
 import { initializeApp } from 'firebase/app';
 import {
-  getFirestore,
-  collection,
   addDoc,
-  updateDoc,
+  collection,
   deleteDoc,
-  query,
   doc,
   getDoc,
   getDocs,
+  getFirestore,
+  query,
+  updateDoc,
   where,
 } from 'firebase/firestore';
-
 import firebaseConfig from '../config/firebase';
 
 export interface CreateCard {
