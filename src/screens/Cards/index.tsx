@@ -29,7 +29,7 @@ const Cards: React.FC = () => {
     state: { collection },
   } = useLocation() as Location;
 
-  const [cards, setCards] = useState<Card[]>();
+  const [cards, setCards] = useState<Card[]>([]);
   const [search, setSearch] = useState('');
 
   const handleClickAddCard = () => {
@@ -92,9 +92,11 @@ const Cards: React.FC = () => {
         ))}
       </ListCards>
 
-      <Footer>
-        <Button label="Jogar!" green onClick={handlePlayCards} />
-      </Footer>
+      {cards.length > 0 && (
+        <Footer>
+          <Button label="Jogar!" green onClick={handlePlayCards} />
+        </Footer>
+      )}
     </Container>
   );
 };

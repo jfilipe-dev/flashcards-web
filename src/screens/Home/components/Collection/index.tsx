@@ -1,8 +1,8 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { FaTrashAlt, FaPencilAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
+import ConfirmModal from '../../../../components/Modal';
 import { Collection } from '../../../../services/collections';
 import {
   Container,
@@ -22,6 +22,8 @@ const CollectionItem = ({ data, deleteCollection }: CollectionItemProps) => {
   const { palette } = useTheme();
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleEdit = () => {
     navigate(`/create-or-update-collection`, {
       state: {
@@ -39,18 +41,26 @@ const CollectionItem = ({ data, deleteCollection }: CollectionItemProps) => {
   };
 
   return (
-    <Container>
-      <Content onClick={handleSelectCollection}>
-        <Image src={data.image} />
-        <Title>{data.name}</Title>
-      </Content>
-      <EditButton onClick={handleEdit}>
-        <FaPencilAlt size={24} color={palette.blue} />
-      </EditButton>
-      <RemoveButton onClick={deleteCollection}>
-        <FaTrashAlt size={24} color={palette.error} />
-      </RemoveButton>
-    </Container>
+    <>
+      <ConfirmModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        onConfirm={deleteCollection}
+        text="Tem certeza que deseja remover essa coleção? Isso excluirá todos os cartões contidos nela."
+      />
+      <Container>
+        <Content onClick={handleSelectCollection}>
+          <Image src={data.image} />
+          <Title>{data.name}</Title>
+        </Content>
+        <EditButton onClick={handleEdit}>
+          <FaPencilAlt size={24} color={palette.blue} />
+        </EditButton>
+        <RemoveButton onClick={() => setIsOpen(true)}>
+          <FaTrashAlt size={24} color={palette.error} />
+        </RemoveButton>
+      </Container>
+    </>
   );
 };
 

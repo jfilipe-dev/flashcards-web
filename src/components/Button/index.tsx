@@ -5,6 +5,7 @@ import { Container, Label } from './styles';
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   label: string;
   green?: boolean;
+  error?: boolean;
 }
 
 const Button = ({ label, ...rest }: ButtonProps) => {

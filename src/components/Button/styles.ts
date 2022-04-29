@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 
-export const Container = styled.button<{ green?: boolean }>`
+interface ContainerProps {
+  green?: boolean;
+  error?: boolean;
+}
+
+export const Container = styled.button<ContainerProps>`
   padding: 20px 28px;
   border: none;
   margin-top: 24px;
   border-radius: 0.4rem;
-  background: ${({ theme, green }) =>
-    green ? theme.palette.green : theme.palette.primary};
+  background: ${({ theme, green, error }) =>
+    green
+      ? theme.palette.green
+      : error
+      ? theme.palette.error
+      : theme.palette.primary};
 `;
 
 export const Label = styled.span`

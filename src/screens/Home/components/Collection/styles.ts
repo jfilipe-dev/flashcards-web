@@ -32,7 +32,6 @@ export const EditButton = styled.button`
   position: absolute;
   top: 12px;
   right: 12px;
-  z-index: 99;
 `;
 
 export const RemoveButton = styled.button`
@@ -41,5 +40,4 @@ export const RemoveButton = styled.button`
   position: absolute;
   bottom: 12px;
   right: 12px;
-  z-index: 99;
 `;
