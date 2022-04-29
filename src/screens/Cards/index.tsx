@@ -47,7 +47,9 @@ const Cards: React.FC = () => {
 
   const data = useMemo(() => {
     if (!search) return cards;
-    return cards?.filter((card) => card.front.includes(search));
+    return cards?.filter((card) =>
+      card.front.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    );
   }, [cards, search]);
 
   const handlePlayCards = () => {

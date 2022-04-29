@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import { Container, Title, Subtitle } from './styles';
 import Input from '../../components/Input';
+import Textarea from '../../components/Textarea';
 import Button from '../../components/Button';
 import getValiationErros from '../../utils/getValiationErros';
 import { addNewCollection, updateCollection } from '../../services/collections';
@@ -104,7 +105,7 @@ const CreateOrUpdateCollection: React.FC = () => {
           error={errors.name}
         />
 
-        <Input
+        <Textarea
           label="Descrição"
           placeholder="Descreva os detalhes da coleção"
           onChange={(e) => setDescription(e.target.value)}
